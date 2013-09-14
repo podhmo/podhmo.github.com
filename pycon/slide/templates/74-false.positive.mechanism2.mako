@@ -13,7 +13,7 @@
   <li>依存オブジェクト: target.Book</li>
 </ul>
 
-<div style="background-color:#afa; position:absolute; top:80px; left:275px; font-size:18pt; padding:5px 5px">
+<div style="background-color:#afa; position:absolute; top:80px; left:350px; font-size:18pt; padding:5px 5px">
 Running corectly
 </div>
 

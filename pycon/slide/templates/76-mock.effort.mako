@@ -8,7 +8,7 @@
 <%include file="./codes/false_positive/with_spec_tests.py"/>
 </%u:codebox_right>
 
-<div style="background-color:#faa; position:absolute; top:80px; left:400px; font-size:18pt; padding:5px 5px">
+<div style="background-color:#faa; position:absolute; top:80px; left:480px; font-size:18pt; padding:5px 5px">
 Error
 </div>
 
