@@ -11,11 +11,11 @@
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 <%block name="in_section">
-<div style="background-color:#afa; position:absolute; top:210px; left:20px; font-size:18pt">
+<div style="background-color:#afa; position:absolute; top:210px; left:80px; font-size:18pt">
 テスト対象への入力を置き換える
 </div>
 
-<div style="background-color:#afa; position:absolute; top:480px; left:20px; font-size:18pt">
+<div style="background-color:#afa; position:absolute; top:480px; left:80px; font-size:18pt">
 テスト対象からの出力を調査する
 </div>
 </%block>

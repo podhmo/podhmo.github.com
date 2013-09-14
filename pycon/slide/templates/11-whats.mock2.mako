@@ -1,7 +1,7 @@
 <%inherit file="./11-whats.mock.mako"/>
 
 <%block name="in_section">
-<div style="background-color:#afa; position:absolute; top:210px; left:20px; font-size:18pt">
+<div style="background-color:#afa; position:absolute; top:210px; left:80px; font-size:18pt">
 テスト対象への入力を置き換える
 </div>
 
