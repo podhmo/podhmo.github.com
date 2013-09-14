@@ -1,0 +1,13 @@
+>>> class CallableObject(object):
+...     def __init__(self, v):
+...         self.return_value = v
+...     def __call__(self, *args, **kwargs):
+...         return self.return_value
+... 
+>>> o = CallableObject("has __call__")
+>>> callable(o)
+True
+>>> o.return_value
+"has __call__"
+>>> o()
+"has __call__"

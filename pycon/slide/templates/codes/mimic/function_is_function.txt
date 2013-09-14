@@ -1,0 +1,12 @@
+>>> def fn(*args,**kwargs):
+...     return "function is callable"
+... 
+>>> fn("test")
+'function is callable'
+>>> callable(fn)
+True
+>>> hasattr(fn, "__call__")
+True
+>>> fn.__call__("test")
+'function is callable'
+

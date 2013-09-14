@@ -1,0 +1,11 @@
+>>> class A(object):
+...     pass
+... 
+>>> a = A()
+>>> a.__dict__
+{}  
+>>> a.x = 'x'
+>>> a.__dict__
+{'x': 'x'}
+>>> a.x
+'x'

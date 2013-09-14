@@ -1,0 +1,3338 @@
+<!doctype html>
+<html lang="ja">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>about mock</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+        
+<style type="text/css">
+
+.code-box-left{
+  float:left;
+  width: 50%;
+}
+.code-box-right{
+  float:left;
+  width: 50%;
+}
+.code-box-right:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+.reveal pre {
+  width: 95%;
+}
+.reveal pre code{
+  max-height: 500px;
+}
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  /* text-transform: capitalize; */
+  text-transform: none;
+}
+
+.reveal li {
+  line-height: 1.2em;
+}
+.reveal ul.top > li {
+  line-height: 1.5em;
+}
+</style>
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+
+
+
+<section>
+
+
+
+
+<h1>about mock</h1>
+<h3>inside mock? inside python?</h3>
+<p><small>podhmo</small>
+</p>
+
+</section>
+
+
+
+
+<section>
+
+<h2>おまえだれよ</h2>
+
+
+
+<p>
+<img src="./images/podhmo.png"/ width="150px" height="150px"/>
+</p>
+<ul>
+  <li>podhmo <a href="https://twitter.com/podhmo">twitter</a></li>
+  <li>beproud 所属</li>
+  <li>好きなもの pyflakes</li>
+  <li>嫌いなもの pylint</li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h2>collections.defaultdictが好きです</h2>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+from collections import defaultdict
+def dt():
+    return defaultdict(dt)
+
+D = dt()
+D["x"]["y"]["z"] = "aaaaa"
+
+D["x"]["y"]["z"] # => "aaaaa"
+D["x"]["x"] # => defaultdict([function dt at 0x10b073398], {})
+
+
+</code></pre>
+
+<p>pythonを使って何か作るより、pythonで遊んでいることが多い気がします</p>
+
+</section>
+　
+
+  <section>
+    <h2>ところで</h2>
+  </section>
+
+
+
+
+<section>
+
+<h2>What is mock? python</h2>
+
+
+
+
+<ul class="top">
+  <li>python 3.3から標準ライブラリに含まれました</li>
+  <ul>
+    <li><a href="http://docs.python.org/dev/library/unittest.mock">26.4. unittest.mock — mock object library — Python v3.4.0a1 documentation</a></li>
+  </ul>
+  <li>テスト用のライブラリ</li>
+  <ul>
+    <li>実行時に、好きな値を返すようにしたり(stub)</li>
+    <li>実行後に、どのように使われたか確認したり(spy)</li>
+  </ul>
+  <li>中を覗いてみると結構おもしろかったりします</li>
+</ul>
+
+</section>
+　
+
+
+
+<section data-background-image="./images/test_double.png" data-background-repeat="no-repeat" data-background-size="60% 60%" data-background-position="55% 60%">
+
+
+
+
+
+
+
+<h2>what is mock?</h2>
+<h4>mockではなくtest doubleと言う方が正しい</h4>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+<div style="background-color:#afa; position:absolute; top:210px; left:20px; font-size:18pt">
+テスト対象への入力を置き換える
+</div>
+
+<div style="background-color:#afa; position:absolute; top:480px; left:20px; font-size:18pt">
+テスト対象からの出力を調査する
+</div>
+
+
+
+
+<div class="reference">
+
+<p>
+  <small><a href="http://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E3%83%80%E3%83%96%E3%83%AB">テストダブル - Wikipedia</a>,
+<a href="http://en.wikipedia.org/wiki/Test_double">Test double - Wikipedia</a></small>
+</p>
+
+</div>
+
+
+
+</section>
+　
+
+
+
+<section data-background-image="./images/test_double.png" data-background-repeat="no-repeat" data-background-size="60% 60%" data-background-position="55% 60%">
+
+
+
+
+
+
+
+<h2>what is mock?</h2>
+<h4>mockではなくtest doubleと言う方が正しい</h4>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+<div style="background-color:#afa; position:absolute; top:210px; left:20px; font-size:18pt">
+テスト対象への入力を置き換える
+</div>
+
+<div style="background-color:#ffa; position:absolute; top:210px; left:750px; font-size:18pt">
+<p>「今日」という時刻に依存した処理。</p>
+<p>「今日」を「2000/01/01」にとしてテストしたい</p>
+<p> date.today()を「2000/01/01」を返すように置き換える。</p>
+</div>
+
+
+
+
+<div class="reference">
+
+<p>
+  <small><a href="http://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E3%83%80%E3%83%96%E3%83%AB">テストダブル - Wikipedia</a>,
+<a href="http://en.wikipedia.org/wiki/Test_double">Test double - Wikipedia</a></small>
+</p>
+
+</div>
+
+
+
+</section>
+　
+
+
+
+<section data-background-image="./images/test_double.png" data-background-repeat="no-repeat" data-background-size="60% 60%" data-background-position="55% 60%">
+
+
+
+
+
+
+
+<h2>what is mock?</h2>
+<h4>mockではなくtest doubleと言う方が正しい</h4>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+<div style="background-color:#afa; position:absolute; top:480px; left:20px; font-size:18pt">
+テスト対象からの出力を調査する
+</div>
+
+<div style="background-color:#ffa; position:absolute; top:380px; left:750px; font-size:18pt">
+<p>渡されたデータを「印刷」する処理</p>
+<p>実際には「印刷」せずに、確認したい</p>
+<p>印刷処理を置き換える。渡された値を確認</p>
+</div>
+
+
+
+
+<div class="reference">
+
+<p>
+  <small><a href="http://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E3%83%80%E3%83%96%E3%83%AB">テストダブル - Wikipedia</a>,
+<a href="http://en.wikipedia.org/wiki/Test_double">Test double - Wikipedia</a></small>
+</p>
+
+</div>
+
+
+
+</section>
+
+
+  <section>
+    <h2>テスト時に都合の良いように、依存先を置き換える</h2>
+  </section>
+
+
+  <section>
+    <h2>微妙に言葉の定義が違ったりします</h2>
+  </section>
+
+
+
+
+<section>
+
+<h2>ここでは</h2>
+
+
+
+
+<ul>
+  <li>入力値の置き換え=Stub</li>
+  <li>出力値の調査=Spy</li>
+</ul>
+<p>ということで話を進めます</p>
+
+
+</section>
+
+
+
+
+<section>
+
+<h2>How to use? stub</h2>
+
+
+
+
+<p>実行時に、好きな値を返すようにしたり(stub)</p>
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+from datetime import datetime
+
+def is_holiday():
+    return datetime.now().weekday() == 0
+
+def visit_shop(name):
+    if is_holiday():
+        fmt = "{name} is close."
+        return fmt.format(name=name)
+    else:
+        fmt = "{name} is open."
+        return fmt.format(name=name)
+
+
+</code>target.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+import unittest
+
+class Tests(unittest.TestCase):
+    def _callFUT(self, *args, **kwargs):
+        from target import visit_shop #2.x
+        return visit_shop(*args, **kwargs)
+
+    @mock.patch("target.is_holiday")
+    def test_it(self, m):
+        m.return_value = True
+        result = self._callFUT("Shop")
+
+        expected = "Shop is close."
+        self.assertEqual(result, expected)
+
+
+</code>tests.py</pre>
+</div>
+
+<ul>
+  <li>テスト対象: visit_shop</li>
+  <li>is_holiday()という入力値に依存</li>
+</ul>
+
+
+</section>
+　
+
+
+
+<section>
+
+<h2>How to use? spy</h2>
+
+
+
+
+
+<p>実行後に、どのように使われたか確認したり(spy)</p>
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+def enqueue_data(data):
+    # using external resource! (e.g. MQ)
+    message = "Enqueue Messaging Queue!"
+    raise Exception(data, message)
+
+def notify_message(name):
+    # using external resource! (e.g. mail)
+    fmt = "{name} submitted!"
+    raise Exception(fmt.format(name=name))
+
+def after_submit(data, name):
+    enqueue_data(data)
+    notify_message(name)
+
+
+
+</code>target.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+import unittest
+
+class Tests(unittest.TestCase):
+    def _callFUT(self, *args, **kwargs):
+        from target import after_submit
+        return after_submit(*args, **kwargs)
+
+    @mock.patch("target.notify_message")
+    @mock.patch("target.enqueue_data")
+    def test_it(self, m0, m1):
+        data = mock.sentinel.Data
+        self._callFUT(data, "Foo")
+
+        m0.assert_called_once_with(data)
+        m1.assert_called_once_with("Foo")
+
+
+</code>tests.py</pre>
+</div>
+
+<ul>
+  <li>テスト対象: after_submit</li>
+  <li>enqueue_data,notify_messageへの出力を調査</li>
+</ul>
+
+
+</section>
+　
+
+  <section>
+    <h2>基本的には、mock.patch()を使っていれば良いです</h2>
+  </section>
+
+
+  <section>
+    <h2>中身に興味は？</h2>
+  </section>
+
+
+
+
+<section>
+
+<h2>mockに必要なもの</h2>
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+from mock import patch
+from target import whattime_is_it, notify
+
+def greeting(name):
+    hour = whattime_is_it()
+    if 0 <= hour <= 4:
+        fmt = "{name}, Goto Bed!!"
+        notify(fmt.format(name=name))
+
+@patch("__main__.notify") #patch
+@patch("__main__.whattime_is_it") #patch
+def test(m0,m1):
+    m0.return_value = 1 #mimic(fake)
+    greeting("Foo")
+    m1.assert_called_with("Foo, Goto Bed!!") # captured
+
+
+
+</code></pre>
+
+
+<ul>
+  <li>模倣(mimic,fake)</li>
+  <li>置き換え(patch)</li>
+  <li>記録(capture)</li>
+</ul>
+
+</section>
+
+
+  <section>
+    <h2>模倣(mimic,fake)</h2>
+  </section>
+
+
+
+
+<section>
+
+<h2>模倣(mimic,fake)</h2>
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+def complex_query(qs, name):
+    qs = qs.where(name=name).where(pemission_id=1)
+    return qs.where(deleted_at=None).as_list()
+
+
+m = mock.Mock()
+m.where.return_value.where.return_value.where.return_value.as_list.return_value = ["Foo"]
+
+complex_query(m, "Foo") # => ["Foo"]
+
+
+</code></pre>
+
+
+<ul>
+  <li>return_valueで呼ばれた際の戻り値を設定</li>
+  <li>実行する前に返される値を設定しておく</li>
+</ul>
+
+<p>.アクセスを模倣したい。関数呼び出しを模倣したい。</p>
+
+</section>
+
+
+
+
+<section>
+
+<h2>a.x? a.x=x?, a.__dict__</h2>
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+>>> class A(object):
+...     pass
+... 
+>>> a = A()
+>>> a.__dict__
+{}  
+>>> a.x = 'x'
+>>> a.__dict__
+{'x': 'x'}
+>>> a.x
+'x'
+
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+>>> def fn():
+...     return "function is object"
+... 
+>>> fn()
+'function is object'
+>>> fn.__dict__
+{}
+>>> fn.x = "x"
+>>> fn.x
+'x'
+>>> 
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>オブジェクトは__dict__という属性を持つ。__dict__は辞書</li>
+  <li>a.x -> getattr(a, "x") -> a.__dict__["x"]</li>
+  <li>a.x = x -> setattr(a, "x", x) -> a.__dict__["x"] = x</li>
+</ul>
+<p>いつでもオブジェクトにテキトウな属性を設定できる。</p>
+<p><small>属性を設定できないオブジェクトもあります。何でしょう？</small></p>
+
+</section>
+
+
+
+
+<section>
+
+<h2>callable(f)?, f.__call__</h2>
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+>>> class CallableObject(object):
+...     def __init__(self, v):
+...         self.return_value = v
+...     def __call__(self, *args, **kwargs):
+...         return self.return_value
+... 
+>>> o = CallableObject("has __call__")
+>>> callable(o)
+True
+>>> o.return_value
+"has __call__"
+>>> o()
+"has __call__"
+
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+>>> def fn(*args,**kwargs):
+...     return "function is callable"
+... 
+>>> fn("test")
+'function is callable'
+>>> callable(fn)
+True
+>>> hasattr(fn, "__call__")
+True
+>>> fn.__call__("test")
+'function is callable'
+
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>callableなものとは、__call__を持つもの</li>
+  <li>オブジェクトも__call__を持てば、callableに</li>
+</ul>
+<p>実行したら、return_valueを返すオブジェクトを作れば良い</p>
+
+</section>
+
+
+
+
+<section>
+
+<h2>collections.defaultdictが好きです</h2>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+from collections import defaultdict
+def dt():
+    return defaultdict(dt)
+
+D = dt()
+D["x"]["y"]["z"] = "aaaaa"
+
+D["x"]["y"]["z"] # => "aaaaa"
+D["x"]["x"] # => defaultdict([function dt at 0x10b073398], {})
+
+
+</code></pre>
+
+<p>pythonを使って何か作るより、pythonで遊んでいることが多い気がします</p>
+
+</section>
+　
+
+  <section>
+    <h2>これ位なら作れそうですね</h2>
+  </section>
+
+
+
+
+<section>
+
+<h2>MyMock</h2>
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+class MyMock(object):
+    def __init__(self, name='*'):
+        self.name = name
+
+    def __getattr__(self, k):
+        c = self.__class__(name=k)
+        setattr(self, k, c)
+        return c
+
+    def __call__(self, *args, **kw):
+        if hasattr(self, "return_value"):
+            return self.return_value
+        raise Exception("not callable")
+
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+from mymock import MyMock
+
+def complex_query(qs, name):
+    qs = qs.where(name=name)
+    qs = qs.where(pemission_id=1)
+    qs = qs.where(deleted_at=None)
+    return qs.as_list()
+
+m = MyMock()
+expected = ["Foo"]
+m.where.return_value.where.return_value.where.return_value.as_list.return_value = expected
+
+complex_query(m, "Foo") # => ["Foo"]
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>return_valueで呼ばれた際の戻り値を設定</li>
+  <li>実行する前に返される値を設定しておく</li>
+</ul>
+<!-- <p>__call__を持たない<a href="http://docs.python.org/dev/library/unittest.mock#the-mock-class">mock.NonCallableMock</a>もあります</p> -->
+
+
+
+</section>
+
+
+  <section>
+    <h2>ところで、isinstance(mock, A)はどうやって模倣しますか？</h2>
+  </section>
+
+
+
+
+<section>
+
+<h2>isinstance() using mock.__class__</h2>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+class Target(object):
+    def f(self):
+        return "f"
+
+class FakeTarget(object):
+    def __init__(self, spec_class=None):
+        self.spec_class = spec_class
+
+    def f(self):
+        return "g"
+    @property
+    def __class__(self):
+        return self.spec_class or type(self)
+
+
+</code></pre>
+</div>
+
+
+
+
+<div class="code-box-right">
+模倣していない場合<pre class="language-python"><code data-trim class="highlight python">
+
+
+fake = FakeTarget()
+fake.f() # => "g"
+isinstance(fake, Target) # => False
+isinstance(fake, FakeTarget) # => True
+
+
+
+</code></pre>
+</div>
+
+
+
+
+<div class="code-box-right">
+Targetを模倣した場合<pre class="language-python"><code data-trim class="highlight python">
+
+
+fake = FakeTarget(Target)
+fake.f() # => "g"
+isinstance(fake, Target) # => True
+isinstance(fake, FakeTarget) # => True
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>isinstance()はオブジェクトの__class__を見る</li>
+  <li>__class__をpropertyとして定義しておくとそちらを見る</li>
+</ul>
+
+<p><small>模倣後も依然としてFakeTargetのインスタンスでもある理由はわかりますか？</small></p>
+
+</section>
+
+
+  <section>
+    <h2>置き換え(patch)</h2>
+  </section>
+
+
+
+
+<section>
+
+<h2>置き換え(patch)</h2>
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+with mock.patch("__builtin__.open") as m:
+    m.return_value.read.return_value = "data"
+    result = open("test.txt").read()
+    assert result == "data"
+
+def now():
+    "属性が設定できないのはC拡張のtypeでした"
+    from datetime import datetime
+    return datetime.now()
+
+with mock.patch("__main__.now") as m:
+    m.return_value = "now!"
+    result = now()
+    assert result == "now!"
+now() # => 2013-09-08 11:30:15.572884
+
+
+
+</code></pre>
+
+<ul>
+<li>patchしてmock objectに差し替え</li>
+<li>文字列からパッチ対象どうやって取得する？</li>
+<li>使い終わったら戻さないと</li>
+</ul>
+
+
+</section>
+
+
+
+
+
+<section>
+
+<h2>patch('foo.bar.boo')で起きる事</h2>
+
+
+
+<blockquote>
+<ol>
+  <li>対象オブジェクト(foo.bar)を取得</li>
+  <li>対象オブジェクト(foo.bar)の属性(boo)にmockを挿入</li>
+</ol>
+</blockquote>
+<br/>
+<p>対象オブジェクト?</p>
+<p>属性名?</p>
+<p>モジュール?関数？クラス？メソッド?</p>
+
+</section>
+
+
+
+
+<section>
+
+<h2>foo.bar.boo is 何?</h2>
+
+
+
+
+
+<div class="code-box-left">
+foo.py<pre class="language-python"><code data-trim class="highlight python">
+
+class bar(object):
+    def boo(self):
+        return "boo"
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+foo.py<pre class="language-python"><code data-trim class="highlight python">
+
+class bar(object):
+    class boo(object):
+        pass
+
+</code></pre>
+</div>
+
+
+<div class="code-box-left">
+foo.py<pre class="language-python"><code data-trim class="highlight python">
+
+class bar(object):
+    pass
+bar.boo = classmethod(lambda c: c.__name__)
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+foo.py<pre class="language-python"><code data-trim class="highlight python">
+
+class bar(object):
+    @property
+    def boo(self):
+        return "boo"
+
+</code></pre>
+</div>
+
+
+<div class="code-box-left">
+foo.py<pre class="language-python"><code data-trim class="highlight python">
+
+def bar():
+    return "bar"
+class Boo(object):
+    pass
+bar.boo = Boo()
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+foo/bar.py<pre class="language-python"><code data-trim class="highlight python">
+
+def boo():
+    return "boo"
+
+</code></pre>
+</div>
+
+
+<p>fooモジュールから辿れれば何でも</p>
+
+</section>
+
+
+
+
+<section>
+
+<h2>結局、moduleかそれ以外か</h2>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+def _dot_lookup(thing, comp, import_path):
+    try:
+        return getattr(thing, comp)
+    except AttributeError:
+        __import__(import_path)
+        return getattr(thing, comp)
+
+def _importer(target):
+    components = target.split('.')
+    import_path = components.pop(0)
+    thing = __import__(import_path)
+
+    for comp in components:
+        import_path += ".%s" % comp
+        thing = _dot_lookup(thing,
+                            comp, import_path)
+    return thing
+
+
+</code>mock.py</pre>
+</div>
+
+
+<div class="code-box-right">
+patch('mako.lookup.TemplateLookup')<pre class="language-python"><code data-trim class="highlight python">
+
+>>> import mako
+>>> hasattr(mako,"lookup")
+False
+>>> import mako.lookup
+>>> hasattr(mako,"lookup")
+True
+>>> mako.lookup
+[module 'mako.lookup' from '~/venvs/pycon/lib/python2.7/site-packages/mako/lookup.pyc']
+>>> mako.lookup.TemplateLookup
+[class 'mako.lookup.TemplateLookup']
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>モジュールもオブジェクト</li>
+  <li>import foo.barすればfooからbarが辿れる</li>
+  <li>辿れないならモジュールなのでは？</li>
+</ul>
+
+</section>
+
+
+  <section>
+    <h2>ところで</h2>
+  </section>
+
+
+
+
+<section>
+
+<h3>危険なので止めましょう</h3>
+
+
+
+<p>start(),stop()でmockの有効化,無効化できますが</p>
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import unittest
+import mock
+
+class Tests(unittest.TestCase):
+    def _callFUT(self, *args, **kwargs):
+        from target import fn
+        return fn(*args, **kwargs)
+
+    def test_it(self):
+        m = mock.patch("target.depndents.one")
+        m.return_value = 10
+        m.start() #mockを有効化
+        self._callFUT()
+        m.stop() #mockを無効化
+
+
+</code></pre>
+
+
+<p>テスト実行中にエラーが出たら、stop()呼ばれませんね</p>
+
+</section>
+　
+
+
+
+<section>
+
+<h3>適切に使えば問題無い?</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+class Tests(unittest.TestCase):
+    def setUp(self):
+        self.p1 = patch("target.depends.one")
+        self.p1.start()
+        self.p2 = patch("target.depends.two")
+        self.p2.start()
+
+    def tearDown(self):
+        self.p1.stop()
+        self.p2.stop()
+
+</code></pre>
+</div>
+
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+class Tests(unittest.TestCase):
+    def test_it(self):
+        p3 = patch("target.depends.three")
+        p3.start()
+        self._callFUT() # raise Exception ?
+        p3.stop()
+
+</code></pre>
+</div>
+
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+class Tests(unittest.TestCase):
+    def setUp(self):
+        # ..snip
+        do_something() # raise Exception ?
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>setUp以外のところで、patchが使われたら。。?</li>
+  <li>setUpの途中で例外が発生したら。。？</li>
+</ul>
+
+</section>
+　
+
+
+
+<section>
+
+<h3>まじめに対応するのはめんどう？</h3>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+from __future__ import print_function
+import unittest
+import mock
+
+class Tests(unittest.TestCase):
+    def setUp(self):
+        self.addCleanup(lambda : print("cleanup"))
+        self.addCleanup(mock.stopall)
+        do_something() #raise Exception?
+
+    def tearDown(self):
+        print("teardown")
+
+    def test_it(self):
+        do_something2() #raise Exception?
+
+
+</code></pre>
+
+
+<ul>
+  <li>tearDown()を使わない</li>
+  <li>addCleanup()にmockの無効化処理を追加する</li>
+  <li>mock.stopall()を使うと便利かもしれない</li>
+</ul>
+<p><small>この辺りのことはドキュメントにも書いてあったりします<a href="http://docs.python.org/dev/library/unittest.mock#patch-methods-start-and-stop">26.4.3.5. patch methods: start and stop</a></small></p>
+
+</section>
+　
+
+
+
+<section>
+
+<h3>start(),stop()の実装</h3>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+class _patch(object):
+    _active_patches = set()
+    def start(self):
+        """Activate a patch, returning any created mock."""
+        result = self.__enter__()
+        self._active_patches.add(self)
+        return result
+    def stop(self):
+        """Stop an active patch."""
+        self._active_patches.discard(self)
+        return self.__exit__()
+
+def _patch_stopall():
+    """Stop all active patches."""
+    for patch in list(_patch._active_patches):
+        patch.stop()
+
+def patch(...):
+    pass
+patch.stopall = _patch_stopall
+
+
+</code>mock.py</pre>
+
+
+<ul>
+  <li>self.xは[get(instance,"x") or get(class,"x"), ...]の略
+    <small>正確に言うとmro(method resolution order)の順序で調べていくという感じですね</small>
+  </li>
+  <li>関数に属性追加できますし</li>
+</ul>
+
+
+</section>
+　
+
+  <section>
+    <h2>個人的にはstart(),stop()要らないと思っています</h2>
+  </section>
+
+
+
+
+<section>
+
+<h2>必要だったのはcontext manager?</h2>
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+# 使い終わった後の後処理を忘れない!!
+
+rf = open("anything.txt")
+do_something(rf)
+# raise Exception?
+rf.close() #忘れずに!!
+
+</code></pre>
+<pre class="language-python"><code data-trim class="highlight python">
+# as context manager
+
+with open("anything.txt") as rf:
+    do_something(rf)
+    # raise Exception?
+
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+# as function decorator
+
+def with_open(filename):
+    def _with_open(use):
+        with open(filename) as rf:
+            use(rf)
+    return _with_open
+
+@with_open("anything.txt")
+def use_rf(rf):
+    return do_something(rf)
+
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>資源を使ったら(open)、返す(close)。忘れずに</li>
+  <li>with構文と一緒に使うcontext managerに</li>
+  <li>関数decoratorはcontext managerがあれば
+    <small>実際の定義(mock._patch.decorate_callable)は違ったりしますが。。</small></li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h2>ネストしたcontext manager</h2>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+import mock
+from contextlib import nested
+
+with nested(
+        mock.patch("foo.bar.boo"), 
+        mock.patch("foo.bar.booo"), 
+        mock.patch("foo.bar.boooo"), 
+        mock.patch("foo.bar.booooo")) as (m0, m1, m2, m3):
+    do_something()
+
+
+</code></pre>
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+from contextlib import ExitStack
+
+with ExitStack() as st:
+    m0 = st.enter_context(mock.patch("foo.bar.boo"))
+    m1 = st.enter_context(mock.patch("foo.bar.booo"))
+    m2 = st.enter_context(mock.patch("foo.bar.boooo"))
+    m3 = st.enter_context(mock.patch("foo.bar.booooo"))
+
+    do_something()
+
+
+</code></pre>
+
+
+<ul>
+  <li>2.x系ならcontextlib.nested</li>
+  <li>3.x系ならcontextlib.stack</li>
+</ul>
+<p>
+  <small>
+    <a href="http://www.gembook.org/mockhakoushi-e.html">mockはこう使え</a>,
+    <a href="http://www.gembook.org/python-33-karano-with-wen.html">Python 3.3 からの with 文</a>
+</small></p>
+
+
+
+</section>
+
+
+
+
+<section>
+
+<h2>patch & release</h2>
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+with mock.patch("__builtin__.open") as m:
+    m.return_value.read.return_value = "data"
+    result = open("test.txt").read()
+    assert result == "data"
+
+def now():
+    "属性が設定できないのはC拡張のtypeでした"
+    from datetime import datetime
+    return datetime.now()
+
+with mock.patch("__main__.now") as m:
+    m.return_value = "now!"
+    result = now()
+    assert result == "now!"
+now() # => 2013-09-08 11:30:15.572884
+
+
+
+</code></pre>
+
+<ul>
+<li>patchしてmock objectに差し替え</li>
+<li>文字列からパッチ対象どうやって取得する？</li>
+<li>使い終わったら戻さないと</li>
+</ul>
+
+
+</section>
+
+
+
+
+<section>
+
+<h2>setattr?,delattr?</h2>
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+class Temporary(object):
+    def __init__(self):
+        self.patching = set()
+
+    def patch(self, name, val):
+        _name = "_"+name
+        orig = getattr(self, name)
+        setattr(self, _name, orig)
+        setattr(self, name, val)
+        self.patching.add(name)
+
+    def release(self):
+        for name in self.patching:
+            _name = "_"+name
+            orig = getattr(self, _name)
+            setattr(self, name, orig)
+            delattr(self, _name)
+        self.patching = set()
+
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+from release import Temporary
+from mymock import MyMock
+
+tmp = Temporary()
+tmp.x = 10
+tmp.x # => 10
+
+tmp.patch("x", MyMock())
+tmp.x # => [mymock.MyMock object at 0x10c74a510]
+#>>> tmp.__dict__ 
+#{'patching': set(['x']), '_x': 10, 'x': [mymock.MyMock object at 0x10c74a510]}
+
+tmp.release()
+tmp.x # => 10
+#>>> tmp.__dict__ 
+#{'x': 20, 'patching': set()}
+
+
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>どこにでも属性付加できる。一時退避して元に戻すだけ</li>
+  <li>patch(),release()をcontext managerの機能に
+    <p><small>context managerなら中で例外が発生した場合にもしっかり__exit__してくれますね</small></p>
+  </li>
+
+</ul>
+
+</section>
+
+
+  <section>
+    <h2>モックへの差し替えもそろそろ実装できそうですね</h2>
+  </section>
+
+
+
+
+<section>
+
+<h2>MyMock</h2>
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+from importer import _importer
+from mymock import MyMock
+
+class Patch(object):
+    def __init__(self, target, new, attr):
+        self.target, self.attr = target, attr
+        self.new = new
+
+    def __enter__(self):
+        self._orig = getattr(self.target, self.attr)
+        new = self.new(name=self.attr)
+        setattr(self.target, self.attr, new)
+        return new
+
+    def __exit__(self, type, val, tb):
+        setattr(self.target, self.attr, self._orig)
+        del self._orig
+
+def patch(namespace, new=MyMock):
+    target, attr = namespace.rsplit(".", 1)
+    return Patch(_importer(target), new, attr)
+
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+from patch import patch
+
+with patch("__builtin__.open") as m:
+    m.return_value.read.return_value = "data"
+    result = open("test.txt").read()
+    assert result == "data"
+
+def now():
+    "属性が設定できないのはC拡張のtypeでした"
+    from datetime import datetime
+    return datetime.now()
+
+try:
+    with patch("__main__.now") as m:
+        m.return_value = "now!"
+        result = now()
+        assert result == "now!"
+        raise Exception
+except:
+    pass
+now() # => 2013-09-08 11:30:15.572884
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>context managerで処理の前後でmockに置き換え</li>
+</ul>
+<p><small>実際の所、mockはself._tmp_originalに退避させてます</small></p>
+
+</section>
+
+
+  <section>
+    <h2>patchにどんな文字列渡せば良いんでしょう?</h2>
+  </section>
+
+
+
+
+<section>
+
+<h2>patchに渡す文字列</h2>
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+import random as r
+
+def get_random():
+     return r.random()
+
+</code>myrandom.py</pre>
+<pre class="language-python"><code data-trim class="highlight python">
+from myrandom import get_random
+import myrandom
+
+def use_random1():
+    return get_random() + get_random()
+
+def use_random2():
+    x = myrandom.get_random()
+    y = myrandom.get_random()
+    return x + y
+
+</code>target.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+def _getTargetModule():
+    import target
+    return target
+
+# use random_1
+with mock.patch("target.get_random") as m:
+    m.return_value = 1
+    target = _getTargetModule()
+    result = target.use_random1()
+    assert result == 2
+
+# use random_2
+with mock.patch("target.get_random") as m:
+    m.return_value = 1
+    target = _getTargetModule()
+    result = target.use_random2()
+    """AssertionError: 1.054692676442476 != 2"""
+    assert result == 2
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>use_random1にはpatch("target.get_random")</li>
+  <li>use_random2にはpatch("myrandom.get_random")</li>
+</ul>
+<p><small><a href="http://docs.python.org/dev/library/unittest.mock#where-to-patch">26.4.3.8. Where to patch</a></small></p>
+
+
+
+</section>
+
+
+
+
+<section>
+
+<h2>記録(capture)</h2>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+m = mock.Mock()
+m("I'm sleepy..", where="office?")
+
+# ok.
+m.assert_called_with("I'm sleepy..", where="office?")
+# failure.
+
+try:
+    m.assert_called_with("good night", where="bed")
+except AssertionError as e:
+    assert "Actual call: mock(\"I'm sleepy..\", where='office?')" in str(e)
+else:
+    raise Exception
+
+m1 = mock.Mock()
+m1(1)(2).f(3).g(4)
+m1.assert_called_with(1)
+m1(1).assert_called_with(2)
+m1(1)(2).f.assert_called_with(3)
+
+
+</code></pre>
+
+
+<ul>
+  <li>利用した時に渡された引数と異なればAssertionError</li>
+  <li>ネストした呼び出しにも対応</li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h2>MyMock</h2>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+class MyMock(object):
+    def __init__(self, name='*'):
+        self.name, self.call_args = name, None
+
+    def __getattr__(self, k):
+        c = self.__class__(name=k)
+        setattr(self, k, c)
+        return c
+
+    def __call__(self, *args, **kw):
+        if hasattr(self, "return_value"):
+            self.call_args = (args, kw)
+            return self.return_value
+        raise Exception("not callable")
+
+    def assert_called_with(self, *args, **kw):
+        vls = self.call_args
+        if vls is None:
+            raise AssertionError("not called")
+        if vls != (args, kw):
+            raise AssertionError("! {}".format(vls))
+
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+from mymock import MyMock
+
+m = MyMock()
+m("I'm sleepy..", where="office?")
+
+# ok.
+called_with = m.assert_called_with
+called_with("I'm sleepy..", where="office?")
+# failure.
+
+try:
+    called_with("good night", where="bed")
+except AssertionError as e:
+    print "it's not real"
+else:
+    raise Exception
+
+m1 = MyMock()
+m1(1)(2).f(3).g(4)
+m1.assert_called_with(1)
+m1(1).assert_called_with(2)
+m1(1)(2).f.assert_called_with(3)
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>利用した時に渡された引数と異なればAssertionError</li>
+  <li>ネストした呼び出しにも対応</li>
+</ul>
+
+
+</section>
+
+
+
+
+<section>
+
+<h2>MyMockここまで来ました</h2>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+from mock import patch
+from target import whattime_is_it, notify
+
+def greeting(name):
+    hour = whattime_is_it()
+    if 0 <= hour <= 4:
+        fmt = "{name}, Goto Bed!!"
+        notify(fmt.format(name=name))
+
+@patch("__main__.notify") #patch
+@patch("__main__.whattime_is_it") #patch
+def test(m0,m1):
+    m0.return_value = 1 #mimic(fake)
+    greeting("Foo")
+    m1.assert_called_with("Foo, Goto Bed!!") # captured
+
+
+
+</code>use_mock.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+from patch import patch
+from target import whattime_is_it, notify
+
+def greeting(name):
+    hour = whattime_is_it()
+    if 0 <= hour <= 4:
+        fmt = "{name}, Goto Bed!!"
+        notify(fmt.format(name=name))
+
+# hmm.. not decorator
+with patch("__main__.whattime_is_it") as m0:
+    m0.return_value = 1
+    with patch("__main__.notify") as m1:
+        greeting("Foo")
+        m1.assert_called_with("Foo, Goto Bed!!")
+
+
+</code>use_mymock.py</pre>
+</div>
+
+
+</p>今まででてきたmymock,patch,(importer)の組み合わせ</p>
+<p>意外とコアの部分はシンプル.</p>
+<p><small>まとめたコードは<a href="https://gist.github.com/podhmo/6497807">https://gist.github.com/podhmo/6497807</a>にあります</small></p>
+
+</section>
+
+
+
+
+
+<section data-background-image="./images/difference.png" data-background-repeat="no-repeat" data-background-size="40% 45%"  data-background-position="5% 85%">
+
+<h2>mock.difference(mymock)</h2>
+
+
+
+
+
+<ul style="margin-bottom:100px;">
+  <li>記録(capture) -- 等値性の変更, assertionの種類, Any, Call</li>
+  <li>置き換え(patch) -- patchの種類, patchの亜種, patchの引数</li>
+  <li>模倣(mimic,fake) -- 例外送出, 引数を利用して値を返す </li>
+</ul>
+<p>欲しい機能は結構あります</p>
+
+</section>
+
+
+
+
+<section>
+
+<h3>等値性の評価を変えてみる</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+def notify(obj, message):
+    raise Exception
+
+def notify_object(val):
+    obj = Value(val)
+    notify(obj, object())
+
+class Value(object):
+    def __init__(self, val):
+        self.val = val
+
+class Matcher(object):
+    def __init__(self, o):
+        self.o = o
+    def __eq__(self, o):
+        for k in ["__class__", "val"]:
+            if getattr(self.o, k) != getattr(o, k):
+                return False
+        return True
+
+
+</code>matcher.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+import unittest
+from matcher import Matcher
+from matcher import notify_object, Value
+
+class Tests(unittest.TestCase):
+    @mock.patch("matcher.notify")
+    def test_check_with_eq(self, m):
+        v = mock.sentinel.value
+        notify_object(v)
+        with self.assertRaises(AssertionError):
+            m.assert_called_with(Value(v),
+                                      mock.ANY)
+
+    @mock.patch("matcher.notify")
+    def test_check_with_equal(self, m):
+        v = mock.sentinel.value
+        notify_object(v)
+        m.assert_called_with(Matcher(Value(v)),
+                             mock.ANY)
+
+
+</code></pre>
+</div>
+
+
+
+<ul>
+  <li>1 == 1 is True? and [1] == [1] is True?</li>
+  <li>Value(1) == Value(1) is True?</li>
+</ul>
+<p><small><a href="http://docs.python.org/dev/library/unittest.mock-examples.html#more-complex-argument-matching">26.5. unittest.mock — getting started — Python v3.4.0a2 documentation</a></small></p>
+
+</section>
+
+
+
+
+<section>
+
+<h3>patch1 色々な使い方</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+with mock.patch("foo.bar.boo") as m:
+    m.return_value = "mocked"
+    do_something()
+
+@mock.patch("foo.bar.boo")
+def use_decorator(m):
+    m.return_value = "mocked"
+    do_something()
+
+# don't use
+p = mock.patch("foo.bar.boo")
+m = p.start()
+m.return_value = "mocked"
+do_something()
+p.end()
+
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+mock.patch.TEST_PREFIX = "use_"
+
+@mock.patch("foo.bar.Boo.__iter__") 
+class Tests(object):
+    def use__class_decorator(self, m):
+        m.return_value = iter([1, 2])
+        do_something()
+
+    def use__class_decorator2(self, m):
+        m.return_value = iter([True])
+        do_something()
+
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>コンテキストマネージャ</li>
+  <li>start(),stop()を陽に使う</li>
+  <li>デコレータ(関数デコレータ,クラスデコレータ)
+    <small>mock.patch.TEST_PREFIXでmockを取り付けるメソッドを変更できます</small>
+  </li>
+</ul>
+
+
+</section>
+
+
+
+
+<section>
+
+<h3>patch2 色々な亜種</h3>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+from collections import Counter
+
+#mock.patch.object
+with mock.patch.object(Counter, "__getitem__") as m:
+    m.return_value = mock.sentinel.cnt
+    c = Counter()
+    c[0] = 10000000000000000
+    assert c[0] == mock.sentinel.cnt
+
+
+#mock.patch.dict
+D = {"key": "value"}
+with mock.patch.dict(D, k="v"):
+    assert D["k"] == "v"
+assert D.get("k", None) is None
+
+m = mock.Mock()
+m.boo.return_value = "boo!"
+with mock.patch.dict("sys.modules", foo=m):
+    import foo
+    assert foo.boo() == "boo!"
+
+
+
+</code></pre>
+
+
+<ul>
+  <li>patch.object: オブジェクトの属性を差し替える</li>
+  <li>patch.dict: 辞書の値を差し替える
+    <small>sys.modulesでモジュールの差し替えをすることがほとんど</small></li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h3>side_effect 戻り値を関数で指定する</h3>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+m = mock.Mock()
+m.foo.return_value = 10
+
+assert m.foo(10) == 10 #指定した値しか返せない
+assert m.foo(10) == 10 
+
+def even_true(v):
+    return [True, False][v % 2]
+m.bar.side_effect = odd_true #side_effectで関数を登録すると
+
+assert m.bar(10) is True #呼び出した際に、登録した関数が使われる
+assert m.bar(9) is False
+
+
+
+</code></pre>
+
+
+<ul>
+<li>引数に伴い返す値を変えたい</li>
+<li>そもそも同じ値を返したくない</li>
+<li>呼び出した時に例外発生させたい</li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h3>side_effect1 望んだ例外を発生させる</h3>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+import unittest
+
+class Tests(unittest.TestCase):
+    def test_side_effect_exception(self):      # call input() raise RunTimeError
+        m = mock.Mock()
+        m.side_effect = RuntimeError("uggg")
+        with self.assertRaises(RuntimeError):
+            input("input string") 
+
+    def test_attribute_error(self):            # access .foo raise AttributeError
+        m = mock.Mock()
+        m.foo.bar.boo
+        with self.assertRaises(AttributeError):
+            del m.foo
+            m.foo
+
+
+
+
+</code></pre>
+
+
+<ul>
+<li>例外オブジェクトを設定。呼び出し時に指定の例外発生</li>
+<li>属性をdelで消す。アクセス時にAttributeError発生</li>
+<li>アクセス時に、指定の例外を発生させるには??</li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h3>side_effect1 望んだ例外を発生させる</h3>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+import unittest
+
+class Tests(unittest.TestCase):
+    def test_property_access_exception(self):
+        """obj.foo => we must raise RuntimeError!"""
+        m = mock.Mock()                            
+        type(m).foo = mock.PropertyMock(side_effect=RuntimeError("hmm"))
+        with self.assertRaisesRegexp(RuntimeError, "hmm"):
+            m.foo
+
+    def test_this_is_Important(self):
+        self.assertNotEqual(mock.Mock(), mock.Mock())
+        self.assertNotEqual(type(mock.Mock()), type(mock.Mock()))
+
+        # ordinary, type(object()) == type(object()) is True
+
+
+</code></pre>
+
+
+<ul>
+<li>アクセス時に、指定の例外を発生させるには??</li>
+<li>mock.PropertyMockを使うのが楽です</li>
+<li>type()を使ってください。各objectのtypeは独立してます</li>
+</ul>
+
+<div style="margin-top:10px;">
+<p><small>中でちょっと気の効いた事してますが。単純です。<br/>
+プロパティがディスクリプタでできる事が知っていればなるほどと思うでしょう。</small></p>
+</div>
+
+</section>
+
+
+
+
+<section>
+
+<h3>side_effect2 呼び出す度に違う値を</h3>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+import random
+
+original = random.random
+with mock.patch.object(random, "random") as m:
+    m.side_effect = lambda : original > 0.5
+    assert random.random() in [True, False]
+    assert random.random() in [True, False]
+
+m = mock.Mock()
+with mock.patch.dict("sys.modules", random=m):
+    m.random.side_effect = [10, 20]
+    import random
+    assert random.random() == 10
+    assert random.random() == 20
+
+
+</code></pre>
+
+
+<ul>
+  <li>関数以外にiterableなオブジェクトも渡せる</li>
+  <li>呼び出す度に１個ずつ消費される</li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h3>side_effect3 selfの属性を触りたい</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+class Model(object):
+    def __init__(self, value):
+        self.value = value
+        self.actions = []
+
+    def save(self):
+        raise Exception
+
+def create_model(value):
+    model = Model(value)
+    model.actions.append("create")
+    model.save()
+    #return model がない
+
+
+</code>target.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+from target import Model, create_model
+import mock
+from mock import patch
+
+# 通常のpatchだと、selfに触れない。
+with patch.object(Model, "save") as m:
+    m.side_effect = lambda self: None
+    create_model(mock.sentinel.value)
+    "TypeError: [lambda]() takes exactly 1 argument (0 given)"
+
+with patch.object(Model, "save", autospec=True) as m:
+    def assertion_when_save(self):
+        assert self.value == mock.sentinel.value
+        assert self.actions == ["create"]
+    m.side_effect = assertion_when_save
+    create_model(mock.sentinel.value)
+
+
+</code></pre>
+</div>
+
+
+<ul>
+  <li>autospec=Trueを追加しましょう</li>
+  <li>実際のメソッドのシグネチャの通りに呼び出します</li>
+  <li>selfが取れます</li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h3>side_effect4 ファイルIOのかわり</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+def write_message(message, name="foo.txt"):
+    with open(name, "a") as wf:
+        wf.write(message)
+
+with mock.patch("__builtin__.open") as m:
+    io = mock.mock_open()
+    m.side_effect = io
+    write_message("foo")
+    io.assert_called_once_with("foo.txt", "a")
+    mwrite = io.return_value.write
+    mwrite.assert_called_once_with("foo")
+
+</code>write_io_mock.py</pre>
+</div>
+
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+def load_data_from_file(name):
+    with open(name) as rf:
+        send_data(rf.read())
+
+def send(data):
+    raise Exception
+
+with mock.patch("__builtin__.open") as m0:
+    io = mock.mock_open(read_data="*data*")
+    m0.side_effect = io
+    with mock.patch("__main__.send") as m1:
+        load_data_from_file("foo.txt")
+        io.assert_called_once_with("foo.txt")
+        m1.assert_called_once_with("*data*")
+
+</code>read_io_mock.py</pre>
+</div>
+
+
+<ul>
+  <li>mock_openは、読み込み時にも、書き込み時にも便利</li>
+  <li>with関連のめんどうなところを隠蔽してくれています</li>
+  <li>..1つの関数内でopenをload,saveとして使う関数は？</li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h3>side_effect5 ファイルコピーなら</h3>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+def file_copy(src, dst):
+    with open(src) as rf:
+        with open(dst, "w") as wf:
+            wf.write(rf.read())
+
+with mock.patch("__builtin__.open") as m:
+    load = mock.mock_open(read_data="*content of file**")
+    save = mock.mock_open()
+    m.side_effect = [load(), save()]
+
+    file_copy("input.txt", "output.txt")
+
+    assert load.return_value.read() ==  "*content of file**"
+    save.return_value.write.assert_called_once_with("*content of file**")    
+
+</code></pre>
+
+
+<ul>
+  <li>..1つの関数内でopenをload,saveとして使う関数は？</li>
+  <li>side_effectにリストで、read用write用のmockが取れる</li>
+  <li>openしたタイミングのファイル名が取得できません</li>
+</ul>
+
+
+</section>
+
+
+
+
+<section>
+
+<h3>side_effect5.2 ファイルコピーなら</h3>
+
+
+
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+def file_copy(src, dst):
+    with open(src) as rf:
+        with open(dst, "w") as wf:
+            wf.write(rf.read())
+
+with mock.patch("__builtin__.open") as m:
+    load = mock.mock_open(read_data="*content of file**")
+    save = mock.mock_open()
+    buf = [load, save]
+    def dummy_open(name, flag="r"):
+        return save(name, flag) if flag == "w" else load(name, flag)
+    m.side_effect = dummy_open
+
+    file_copy("input.txt", "output.txt")
+    load.assert_called_once_with("input.txt", "r")
+    save.assert_called_once_with("output.txt", "w")
+
+    assert load.return_value.read() ==  "*content of file**"
+    save.return_value.write.assert_called_once_with("*content of file**")    
+
+</code></pre>
+
+
+<ul>
+  <li>..1つの関数内でopenをload,saveとして使う関数は？</li>
+  <li>side_effectに渡すのを関数にする</li>
+  <li>テストコード複雑ですね。。</li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h3>side_effect5.3 ファイルコピーなら</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+def file_copy(src, dst):
+    with open(src) as rf:
+        with open(dst, "w") as wf:
+            wf.write(rf.read())
+
+@contextlib.contextmanager
+def temporary_file():
+    import tempfile
+    import os
+    _, filename = tempfile.mkstemp()
+    yield filename
+    os.remove(filename)
+
+</code>target.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+from target import temporary_file
+from target import file_copy
+
+with temporary_file() as writename:
+    with temporary_file() as readname:
+        with open(readname, "w") as wf :
+            wf.write("*content of file**")
+
+        file_copy(readname,writename)
+
+    with open(writename) as rf:
+        assert rf.read() == "*content of file**"
+
+
+</code>tests.py</pre>
+</div>
+
+
+<p>実際にファイル作って調べても良いじゃないですかね？</p>
+<p><small>そもそも、テスト対象と依存オブジェクトを何で分離したかったんですかね？</small></p>
+
+</section>
+
+
+
+  <section>
+    <h2>今は正しいコード。これからも正しいコード？</h2>
+  </section>
+
+
+
+
+<section>
+
+<h3>そもそもテストってどういう扱い?</h3>
+
+
+
+
+<p>安心して眠れるように</p>
+<br/>
+<ul>
+  <li>テストが失敗している => 出荷禁止?</li>
+  <li>失敗しているテストが0 => 出荷OK?</li>
+  <li>(テストコードがない => test is all green?)</li>
+</ul>
+<br/>
+<p style="margin-top:20px;">発生するエラーを事前に検知するための方法の１つ
+  <small>実際には種類も階層構造も色々ありますが</small>
+</p>
+
+</section>
+
+
+
+
+<section data-background-image="./images/square.png" data-background-repeat="no-repeat" data-background-size="50% 60%" data-background-position="50% 60%">
+
+<h3>失敗しているテスト</h3>
+
+
+
+
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+</section>
+
+
+  <section>
+    <h2>false positive</h2>
+  </section>
+
+
+  <section>
+    <h2>テストは成功しているのに、実際にはエラーで落ちるとか最悪ですね</h2>
+  </section>
+
+
+  <section>
+    <h2>実際ありえます</h2>
+  </section>
+
+
+
+
+<section data-background-image="./images/test_double.png" data-background-repeat="no-repeat" data-background-size="60% 60%" data-background-position="55% 50%">
+
+<h3>mockを使ったテストの仕組み</h3>
+
+
+
+
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<p>mockはテスト対象と依存オブジェクトを分離する</p>
+<p>テスト対象と依存オブジェクトのミスマッチを解消できない</p>
+
+
+</section>
+
+
+
+
+<section>
+
+<h3>最初は正しい動作でした</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+class Book(object):
+    def __init__(self, content):
+        self.content = content
+
+    def pp(self):
+        return self.content #do_something()
+
+class Event(object):
+    def __init__(self):
+        self.events = []
+
+    def publish(self, v):
+        self.events.append(("publish", v))
+
+def publish_pp(event):
+    book = Book("user.get_book()")
+    event.publish(book.pp())
+
+
+</code>target.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+import unittest
+import mock
+
+class Tests(unittest.TestCase):
+    def _callFUT(self, *args, **kwargs):
+        from target import publish_pp 
+        return publish_pp(*args, **kwargs)
+
+    @mock.patch("target.Book")
+    def test_it(self, m):
+        m.return_value.pp.return_value = "mock"
+        from target import Event
+        ev = Event()
+        self._callFUT(ev)
+        expected = ("publish", "mock")
+        self.assertEquals(ev.events[0], expected)
+        m.return_value.pp.assert_called_with()
+
+
+
+</code>tests.py</pre>
+</div>
+
+
+<ul>
+  <li>テスト対象: target.publish_pp</li>
+  <li>依存オブジェクト: target.Book</li>
+</ul>
+
+<div style="background-color:#afa; position:absolute; top:80px; left:275px; font-size:18pt; padding:5px 5px">
+Running corectly
+</div>
+
+<div style="background-color:#afa; position:absolute; top:80px; right:0px; font-size:18pt; padding:5px 5px">
+Test is Success
+</div>
+
+</section>
+
+
+
+
+<section>
+
+<h3>リファクタリング後、バグ修正後</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+class Book(object):
+    def __init__(self, content):
+        self.content = content
+
+    def normalize(self): #dont provide pp
+        return self.content #do_something()
+
+class Event(object):
+    def __init__(self):
+        self.events = []
+
+    def publish(self, v):
+        self.events.append(("publish", v))
+
+def publish_pp(event): #expected pp
+    book = Book("user.get_book()")
+    event.publish(book.pp())
+
+
+</code>target.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+import unittest
+import mock
+
+class Tests(unittest.TestCase):
+    def _callFUT(self, *args, **kwargs):
+        from target import publish_pp 
+        return publish_pp(*args, **kwargs)
+
+    @mock.patch("target.Book")
+    def test_it(self, m): #expected pp
+        m.return_value.pp.return_value = "mock"
+        from target import Event
+        ev = Event()
+        self._callFUT(ev)
+        expected = ("publish", "mock")
+        self.assertEquals(ev.events[0], expected)
+        m.return_value.pp.assert_called_with()
+
+
+
+</code>tests.py</pre>
+</div>
+
+
+<p> Book.ppをBook.normalizeに変更。テスト対象は以前のまま</p>
+<ul>
+  <li>テスト対象: target.publish_pp</li>
+  <li>依存オブジェクト: target.Book</li>
+</ul>
+
+<div style="background-color:#faa; position:absolute; top:80px; left:400px; font-size:18pt; padding:5px 5px">
+Error
+</div>
+
+<div style="background-color:#ffa; position:absolute; top:80px; right:0px; font-size:18pt; padding:5px 5px">
+Test is Success?
+</div>
+
+</section>
+
+
+
+
+<section data-background-image="./images/wrapping.png" data-background-repeat="no-repeat" data-background-size="45% 50%" data-background-position="50% 50%">
+
+<h3>テスト対象と依存オブジェクトを切り離す</h3>
+
+
+
+
+
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<p>テスト対象とテストコードの意図が揃えばテストは成功してしまう</p>
+
+
+<div style="background-color:#77f; position:absolute; top:210px; left:20px; font-size:18pt; color:white; padding:5px 5px">
+Book.ppを期待
+</div>
+
+<div style="background-color:#5b5; position:absolute; top:410px; right:20px; font-size:18pt; color:white; padding:5px 5px">
+Book.normalizeを提供
+</div>
+
+
+<p><small>(実はpatch("target.Book")ではなくpatch("target.Book.pp"),patch.object(Book,"pp")ならばエラー)</small></p>
+
+</section>
+
+
+  <section>
+    <h2>同じことは引数で依存オブジェクトを渡す形式にしてても起きます</h2>
+  </section>
+
+
+  <section>
+    <h2>味方に後ろから銃で撃たれるような感覚になります</h2>
+  </section>
+
+
+  <section>
+    <h2>つらい</h2>
+  </section>
+
+
+  <section>
+    <h2>と怒るのも良いですが。mock頑張ってます。</h2>
+  </section>
+
+
+  <section>
+    <h2>specを付けましょう</h2>
+  </section>
+
+
+
+
+<section>
+
+<h3>mock.patch(.., spec=[Target Class])</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+class Book(object):
+    def __init__(self, content):
+        self.content = content
+
+    def pp(self):
+        return self.content #do_something()
+
+class Event(object):
+    def __init__(self):
+        self.events = []
+
+    def publish(self, v):
+        self.events.append(("publish", v))
+
+def publish_pp(event):
+    book = Book("user.get_book()")
+    event.publish(book.pp())
+
+
+</code>target.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+import unittest
+from mock import patch
+
+class Tests(unittest.TestCase):
+    def _callFUT(self, *args, **kwargs):
+        from target import publish_pp 
+        return publish_pp(*args, **kwargs)
+
+    def test_it(self): #expected pp
+        from target import Book
+        with patch("target.Book",spec=Book) as m:
+            m.return_value.pp.return_value = "mk"
+            from target import Event
+            ev = Event()
+            self._callFUT(ev)
+            expected = ("publish", "mock")
+            self.assertEquals(ev.events[0], expected)
+            m.return_value.pp.assert_called_with()
+
+
+</code>tests.py</pre>
+</div>
+
+
+<div style="background-color:#faa; position:absolute; top:80px; left:400px; font-size:18pt; padding:5px 5px">
+Error
+</div>
+
+<div style="background-color:#faa; position:absolute; top:80px; right:0px; font-size:18pt; padding:5px 5px">
+AttributeError: no attribute 'pp'
+</div>
+
+<p>specは作られるMockが利用できる属性を制限してくれます</p>
+<ul>
+  <li>テスト対象: target.publish_pp</li>
+  <li>依存オブジェクト: target.Book</li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h3>specオプションの意味</h3>
+
+
+
+
+<p>作られるMockが利用できる属性を制限する</p>
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+m = mock.Mock(spec=["foo"])
+assert "foo" in m._mock_methods
+assert not "fbar" in m._mock_methods
+
+m.foo
+# m.bar #AttributeError
+
+from target import Book
+mBook = mock.Mock(spec=Book)
+
+mBook.normalize
+# mBook.pp
+
+
+</code>target.py</pre>
+
+
+<ul>
+  <li>文字列のリストを渡す: 渡された属性のみが許可</li>
+  <li>クラスを渡す: クラスが持つ属性のみが許可</li>
+</ul>
+<p>実装上は、_mock_methodsに属性名が無いか調べている</p>
+
+</section>
+
+
+  <section>
+    <h2>引数の数も気になりませんか？</h2>
+  </section>
+
+
+  <section>
+    <h2>autospecを付けましょう</h2>
+  </section>
+
+
+
+
+<section>
+
+<h3>mock.patch(.., autospec=True)</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+class Book(object):
+    def __init__(self, content):
+        self.content = content
+
+    def pp(self):
+        return self.content #do_something()
+
+class Event(object):
+    def __init__(self):
+        self.events = []
+
+    def publish(self, v):
+        self.events.append(("publish", v))
+
+def publish_pp(event):
+    book = Book("user.get_book()")
+    event.publish(book.pp())
+
+
+</code>target.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+
+import unittest
+import mock
+
+class Tests(unittest.TestCase):
+    def _callFUT(self, *args, **kwargs):
+        from target import publish_pp 
+        return publish_pp(*args, **kwargs)
+
+    @mock.patch("target.Book",autospec=True)
+    def test_it(self, m): #expected pp
+        m.return_value.pp.return_value = "mock"
+        from target import Event
+        ev = Event()
+        self._callFUT(ev)
+        expected = ("publish", "mock")
+        self.assertEquals(ev.events[0], expected)
+        m.return_value.pp.assert_called_with()
+
+
+
+</code>tests.py</pre>
+</div>
+
+
+<div style="background-color:#faa; position:absolute; top:80px; left:400px; font-size:18pt; padding:5px 5px">
+Error
+</div>
+
+<div style="background-color:#faa; position:absolute; top:80px; right:0px; font-size:18pt; padding:5px 5px">
+AttributeError: no attribute 'pp'
+</div>
+
+<p>autospecはパッチ対象のsignatureを自動で設定します</p>
+<ul>
+  <li>テスト対象: target.publish_pp</li>
+  <li>依存オブジェクト: target.Book</li>
+</ul>
+
+</section>
+
+
+
+
+<section>
+
+<h3>autospecオプションの意味</h3>
+
+
+
+
+<p>mockの引数を実際の引数に合わせる</p>
+
+
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+import inspect
+
+def foo(x, y=10):
+    return (x, y)
+
+inspect.getargspec(foo)
+# => ArgSpec(args=['x', 'y'], varargs=None, keywords=None, defaults=(10,))
+
+with mock.patch("__main__.foo") as m:
+    m.return_value = "nospec"
+    m() # => "nospec"
+
+with mock.patch("__main__.foo", autospec=True) as m:
+    m.return_value = "hasspec"
+    m()
+    # TypeError: [lambda]() takes at least 1 argument (0 given)
+
+
+
+</code>target.py</pre>
+
+
+<ul>
+  <li>パッチ対象のsignatureを自動で設定</li>
+  <li>__init__,__call__の引数もチェックしてくれます。</li>
+</ul>
+<p>実装は、「<code>eval("lambda %s: None" % signature)</code>」</p>
+
+</section>
+
+
+  <section>
+    <h2>autospec素晴らしいですね</h2>
+  </section>
+
+
+  <section>
+    <h2>残念なお知らせです</h2>
+  </section>
+
+
+  <section>
+    <h2>autospecの問題</h2>
+  </section>
+
+
+  <section>
+    <h2>プロパティとメソッドの区別が難しい</h2>
+  </section>
+
+
+
+
+<section>
+
+<h3>プロパティとメソッドの区別が難しい</h3>
+
+
+
+
+<p>リファクタリングでメソッドをプロパティに変更した</p>
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+class Foo(object):
+    def foo(self):
+        return "foo"
+
+
+# test
+with mock.patch("__main__.Foo", 
+                autospec=True) as m:
+    m.return_value.foo.return_value = 10
+    assert Foo().foo() == 10
+
+# real application
+assert Foo().foo() == "foo"
+
+
+
+</code>method_to_method.py</pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+class Boo(object):
+    @property
+    def boo(self):
+        return "boo"
+
+# test
+with mock.patch("__main__.Boo", 
+                autospec=True) as m:
+    m.return_value.boo.return_value = 10
+    assert Boo().boo() == 10 #false positive
+
+# real application
+assert Boo().boo() # TypeError
+
+
+</code>method_to_property.py</pre>
+</div>
+
+
+<ul>
+  <li>application: method, test: method => OK</li>
+  <li>application: property, test: method => TOOOOOOO BAD</li>
+</ul>
+
+<div style="background-color:#ffa; position:absolute; top:130px; right:0px; font-size:18pt; padding:5px 5px">
+false positive
+</div>
+
+</section>
+
+
+  <section>
+    <h2>インスタンス変数を関知しない</h2>
+  </section>
+
+
+
+
+<section>
+
+<h3>インスタンス変数を関知しない</h3>
+
+
+
+
+
+<div class="code-box-left">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+class Foo(object):
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+with mock.patch("__main__.Foo", 
+                autospec=True) as m:
+    try:
+        Foo(10, 20).x 
+    except AttributeError:
+        "AttributeError: no attribute 'x'"
+    else:
+        raise Exception
+
+
+</code></pre>
+</div>
+
+
+<div class="code-box-right">
+<pre class="language-python"><code data-trim class="highlight python">
+
+import mock
+
+class Foo(object):
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+class FooForTest(Foo):
+    x = mock.DEFAULT
+    y = mock.DEFAULT
+
+with mock.patch("__main__.Foo", 
+                autospec=FooForTest) as m:
+
+    assert Foo(10, 20).x == mock.DEFAULT
+
+
+</code></pre>
+</div>
+
+
+<p>__init__()が呼ばれて初めてインスタンス変数が束縛される</p>
+<ul>
+  <li>mockで見えるのはクラスオブジェクトまで</li>
+  <li>サブクラスに同名のクラス変数を作れば回避可能だが</li>
+</ul>
+<p><small><a href="http://docs.python.org/dev/library/unittest.mock.html?highlight=autospec#autospeccing">26.4.5.8. Autospeccing</a></small></p>
+
+</section>
+
+
+  <section>
+    <h2>テスト書いても、オブジェクト間のインターフェイスの変更に弱い</h2>
+  </section>
+
+
+
+
+<section>
+
+<h3>もうちょっと制限された自由がほしい</h3>
+
+
+
+
+<blockquote>
+<ul>
+  <li>autospecの強化
+    <ul>
+      <li>袋小路</li>
+    </ul>
+  </li>
+  <li>abc.ABCMeta
+    <ul>
+      <li>metaclassの合成..</li>
+    </ul>
+  </li>
+  <li>Interface的なアノテーション
+    <ul>
+      <li>悪くはない。</li>
+    </ul>
+  </li>
+</ul>
+</blockquote>
+
+<p style="margin-top:20px;">考えていること</p>
+<ol>
+  <li>テストから利用したsignatureを取り出し</li>
+  <li>パッチ対象が必要な要素を持っているか調べる</li>
+</ol>
+<p>何と何を置き換えたか把握できるのが、mock(stub)の利点</p>
+
+</section>
+
+
+  <section>
+    <h2>hai</h2>
+  </section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

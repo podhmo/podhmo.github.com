@@ -1,0 +1,11 @@
+>>> def fn():
+...     return "function is object"
+... 
+>>> fn()
+'function is object'
+>>> fn.__dict__
+{}
+>>> fn.x = "x"
+>>> fn.x
+'x'
+>>> 

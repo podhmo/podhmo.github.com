@@ -1,0 +1,360 @@
+nao-no-MacBook-Air:~ nao$ pycon
+(pycon)nao-no-MacBook-Air:~/vboxshare/venvs/pycon nao$ ls
+bin             include         lib             reveal.js.old   sandbox         slide
+(pycon)nao-no-MacBook-Air:~/vboxshare/venvs/pycon nao$ python
+Python 2.7.3 (default, Nov 17 2012, 19:54:34)
+[GCC 4.2.1 Compatible Apple Clang 4.1 ((tags/Apple/clang-421.11.66))] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import mock
+>>> m = mock.patch("collections.Count")
+>>> m.start()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1396, in start
+    result = self.__enter__()
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1268, in __enter__
+    original, local = self.get_original()
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1242, in get_original
+    "%s does not have the attribute %r" % (target, name)
+AttributeError: <module 'collections' from '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.pyc'> does not have the attribute 'Count'
+>>> m = mock.patch("collections.Counter")
+>>> m.start()
+<MagicMock name='Counter' id='4444562192'>
+>>> m.stop
+<bound method _patch.stop of <mock._patch object at 0x108e9bd10>>
+>>> m.stop()
+>>> m = mock.patch("collections.Counter")
+>>> m.stop()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1404, in stop
+    return self.__exit__()
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1376, in __exit__
+    raise RuntimeError('stop called on unstarted patcher')
+RuntimeError: stop called on unstarted patcher
+>>> m = mock.patch("collections.Counter",spec=True)
+>>> m.start()
+<MagicMock name='Counter' spec='Counter' id='4445284240'>
+>>> m.__class__
+<class 'mock._patch'>
+>>> m
+<mock._patch object at 0x108e9b210>
+>>> m.mock
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: '_patch' object has no attribute 'mock'
+>>> ^D
+(pycon)nao-no-MacBook-Air:~/vboxshare/venvs/pycon nao$ python
+Python 2.7.3 (default, Nov 17 2012, 19:54:34)
+[GCC 4.2.1 Compatible Apple Clang 4.1 ((tags/Apple/clang-421.11.66))] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import mock
+>>> from collections import Counter
+>>> p = mock.patch("collections.Counter")
+>>> m = p.start()
+>>> m
+<MagicMock name='Counter' id='4439884304'>
+>>> isinstance(m,Counter)
+False
+>>> p.stop()
+>>> p = mock.patch("collections.Counter",spec=True)
+>>> m = p.start()
+>>> isinstance(m,Counter)
+True
+>>> p.stop()
+>>> m
+<MagicMock name='Counter' spec='Counter' id='4439887120'>
+>>> m.a
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 658, in __getattr__
+    raise AttributeError("Mock object has no attribute %r" % name)
+AttributeError: Mock object has no attribute 'a'
+>>> m.f
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 658, in __getattr__
+    raise AttributeError("Mock object has no attribute %r" % name)
+AttributeError: Mock object has no attribute 'f'
+>>> m.__getitem__
+<MagicMock name='Counter.__getitem__' id='4440674640'>
+>>> ok
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'ok' is not defined
+>>> Foo = type("Foo", (object,), {"foo": lambda self: (self,"foo")})
+>>> Foo().foo()
+(<__main__.Foo object at 0x108af83d0>, 'foo')
+>>> Foo = type("Foo", (object,), {"__init__": lambda self,v: setattr(self,"v",v) "foo": lambda self: (self.v,"foo")})
+  File "<stdin>", line 1
+    Foo = type("Foo", (object,), {"__init__": lambda self,v: setattr(self,"v",v) "foo": lambda self: (self.v,"foo")})
+                                                                                     ^
+SyntaxError: invalid syntax
+>>> Foo = type("Foo", (object,), {"__init__": lambda self,v: setattr(self,"v",v) "foo": lambda self: (self.v,"foo")})
+>>> Foo = type("Foo", (object,), {"__init__": lambda self,v: setattr(self,"v",v) "foo": lambda self: (self.v,"foo")})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> Foo = type("Foo", (object,), {"__init__": lambda self,v: setattr(self,"v",v), "foo": lambda self: (self.v,"foo")})
+>>> Foo(10).foo()
+(10, 'foo')
+>>> p = mock.patch.object(Foo, "foo", spec=True)
+>>> m = p.start()
+>>> m
+<MagicMock name='foo' spec='function' id='4440687696'>
+>>> m.foo.return_value = 1
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 658, in __getattr__
+    raise AttributeError("Mock object has no attribute %r" % name)
+AttributeError: Mock object has no attribute 'foo'
+>>> m.return_value = 1
+>>> Foo(10)
+<__main__.Foo object at 0x108af85d0>
+>>> Foo(10).foo
+<MagicMock name='foo' spec='function' id='4440687696'>
+>>> Foo(10).foo()
+1
+>>> Foo(10).foo(10)
+1
+>>> Foo(10).foo(10,20)
+1
+>>> m.bar = 10
+>>> m.foo.side_effect = lambda *args,**kwargs: (args,kwargs)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 658, in __getattr__
+    raise AttributeError("Mock object has no attribute %r" % name)
+AttributeError: Mock object has no attribute 'foo'
+>>> m.side_effect = lambda *args,**kwargs: (args,kwargs)
+>>> Foo(10).foo()
+((), {})
+>>> Foo(10).foo(20)
+((20,), {})
+>>> Foo(10).foo(20,30)
+((20, 30), {})
+>>> p.stop()
+>>> p = mock.patch.object(Foo, "foo", autospec=True)                                                     >>> m = p.start()
+>>> m.foo = 10
+>>> m.return_value = 10
+>>> Foo(10).foo()
+10
+>>> Foo(10).foo(10)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<string>", line 2, in funcopy
+TypeError: <lambda>() takes exactly 1 argument (2 given)
+>>> m.side_effect = lambda *args,**kwargs: (args,kwargs)
+>>> Foo(10).foo(10)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<string>", line 2, in funcopy
+TypeError: <lambda>() takes exactly 1 argument (2 given)
+>>> Foo(10).foo()
+((<__main__.Foo object at 0x108b00e10>,), {})
+>>> p.stop()
+>>> p = mock.patch.object(Foo, "foo")
+>>> p.foo.__get__.side_effect(ValueError("hey"))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: '_patch' object has no attribute 'foo'
+>>> m.foo.__get__.side_effect(ValueError("hey"))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'int' object has no attribute '__get__'
+>>> m.__get__.side_effect(ValueError("hey"))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'method-wrapper' object has no attribute 'side_effect'
+>>> p.stop()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1404, in stop
+    return self.__exit__()
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1376, in __exit__
+    raise RuntimeError('stop called on unstarted patcher')
+RuntimeError: stop called on unstarted patcher
+>>> p = mock.patch(Foo,"ppp")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1564, in patch
+    getter, attribute = _get_target(target)
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1410, in _get_target
+    target, attribute = target.rsplit('.', 1)
+AttributeError: type object 'Foo' has no attribute 'rsplit'
+>>> p = mock.patch.object(Foo,"ppp")
+>>> m = p.start()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1396, in start
+    result = self.__enter__()
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1268, in __enter__
+    original, local = self.get_original()
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1242, in get_original
+    "%s does not have the attribute %r" % (target, name)
+AttributeError: <class '__main__.Foo'> does not have the attribute 'ppp'
+>>> p = mock.patch.object(Foo,"ppp",create=True)
+>>> m = p.start()
+>>> m.__get__.side_effect(ValueError("foo"))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 660, in __getattr__
+    raise AttributeError(name)
+AttributeError: __get__
+>>> m.__get__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 660, in __getattr__
+    raise AttributeError(name)
+AttributeError: __get__
+>>> class Bar:
+...     pass
+...
+>>> p = mock.patch(Bar)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1564, in patch
+    getter, attribute = _get_target(target)
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1410, in _get_target
+    target, attribute = target.rsplit('.', 1)
+AttributeError: class Bar has no attribute 'rsplit'
+>>> p = mock.patch("__main__.Bar")
+>>> m = p.start()
+>>> m.foo.__get__.side_effect(ValueError("fo"))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 660, in __getattr__
+    raise AttributeError(name)
+AttributeError: __get__
+>>> m = mock.Mock()
+>>> m.foo.__get__.side_effect(ValueError("foo"))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 660, in __getattr__
+    raise AttributeError(name)
+AttributeError: __get__
+>>> m.foo = mock.PropertyMock(side_effect(ValueError("foo")))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'side_effect' is not defined
+>>> m.foo = mock.PropertyMock(side_effect=(ValueError("foo")))
+>>> m.foo
+<PropertyMock name='mock.foo' id='4440742416'>
+>>> bar
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'bar' is not defined
+>>> Bar
+<MagicMock name='Bar' id='4440732880'>
+>>> Bar()
+<MagicMock name='Bar()' id='4440742608'>
+>>> Bar().foo
+<MagicMock name='Bar().foo' id='4440747344'>
+>>> type(m).foo = mock.PropertyMock(side_effect=(ValueError("foo")))
+>>> m.foo
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 2365, in __get__
+    return self()
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 955, in __call__
+    return _mock_self._mock_call(*args, **kwargs)
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1010, in _mock_call
+    raise effect
+ValueError: foo
+>>> type(m)
+<class 'mock.Mock'>
+>>> type(m).foo.bar
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 2365, in __get__
+    return self()
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 955, in __call__
+    return _mock_self._mock_call(*args, **kwargs)
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 1010, in _mock_call
+    raise effect
+ValueError: foo
+>>> type(m).bar
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: type object 'Mock' has no attribute 'bar'
+>>> type(m).bar = mock.Mock().__get__.side_effect(ValueError("v"))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 660, in __getattr__
+    raise AttributeError(name)
+AttributeError: __get__
+>>> mock.configure_mock
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'configure_mock'
+>>> dir(mock)
+['ANY', 'Base', 'BaseExceptions', 'CallableMixin', 'ClassType', 'ClassTypes', 'DEFAULT', 'DescriptorTypes', 'FILTER_DIR', 'FunctionAttributes', 'FunctionTypes', 'MagicMixin', 'MagicMock', 'MagicProxy', 'Mock', 'NonCallableMagicMock', 'NonCallableMock', 'OldStyleClass', 'PropertyMock', '_ANY', '_Call', '_CallList', '_Sentinel', '_SentinelObject', '_SpecState', '__all__', '__builtins__', '__doc__', '__file__', '__name__', '__package__', '__version__', '_all_magics', '_allowed_names', '_calculate_return_value', '_callable', '_check_and_set_parent', '_check_signature', '_clear_dict', '_copy', '_copy_func_details', '_delegating_property', '_deleted', '_dot_lookup', '_format_call_signature', '_get_class', '_get_eq', '_get_iter', '_get_method', '_get_ne', '_get_target', '_getsignature', '_importer', '_instance_callable', '_is_exception', '_is_instance_mock', '_is_list', '_is_magic', '_is_started', '_isidentifier', '_magics', '_missing', '_must_skip', '_non_defaults', '_patch', '_patch_dict', '_patch_multiple', '_patch_object', '_patch_stopall', '_return_values', '_set_return_value', '_set_signature', '_setup_func', '_side_effect_methods', '_slotted', '_super', '_try_iter', '_unsupported_magics', 'builtin', 'call', 'create_autospec', 'extra', 'file_spec', 'inPy3k', 'inplace', 'inspect', 'keyword', 'magic_methods', 'mock_open', 'numerics', 'original_wraps', 'patch', 'pprint', 're', 'regex', 'right', 'self', 'sentinel', 'sys', 'wraps']
+>>> mock.MagickMock().__get__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'MagickMock'
+>>> mock.MagicMock().__get__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 660, in __getattr__
+    raise AttributeError(name)
+AttributeError: __get__
+>>> mock.MagicMock().foo.__get__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 660, in __getattr__
+    raise AttributeError(name)
+AttributeError: __get__
+>>> mock.MagicMock(create=true).foo.__get__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'true' is not defined
+>>> mock.MagicMock(create=True).foo.__get__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/nao/vboxshare/venvs/pycon/lib/python2.7/site-packages/mock.py", line 660, in __getattr__
+    raise AttributeError(name)
+AttributeError: __get__
+>>> mock.Mock().foo.__dict__["__get__"]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: '__get__'
+>>> mock.Mock().foo.__dict__["__get__"] = mock.Mock().side_effect(ValueError(10))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'NoneType' object is not callable
+>>> mock.Mock().foo.__dict__.get("__get__",mock.Mock()).side_effect(ValueError(10))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'NoneType' object is not callable
+>>> type(mock.Mock())
+<class 'mock.Mock'>
+>>> type(mock.Mock())
+<class 'mock.Mock'>
+>>> type(mock.Mock()) == type(mock.Mock())
+False
+>>> type(mock.Mock()) is type(mock.Mock())
+False
+>>>
