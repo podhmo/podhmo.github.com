@@ -11,11 +11,11 @@
 <p>テスト対象とテストコードの意図が揃えばテストは成功してしまう</p>
 
 <%block name="in_section">
-<div style="background-color:#77f; position:absolute; top:210px; left:20px; font-size:18pt; color:white; padding:5px 5px">
+<div style="background-color:#77f; position:absolute; top:210px; left:80px; font-size:18pt; color:white; padding:5px 5px">
 Book.ppを期待
 </div>
 
-<div style="background-color:#5b5; position:absolute; top:410px; right:20px; font-size:18pt; color:white; padding:5px 5px">
+<div style="background-color:#5b5; position:absolute; top:410px; right:80px; font-size:18pt; color:white; padding:5px 5px">
 Book.normalizeを提供
 </div>
 </%block>
