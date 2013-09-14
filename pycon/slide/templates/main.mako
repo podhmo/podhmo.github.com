@@ -12,7 +12,7 @@
 <%include file='./1-who.am.i.mako' args='title=u"おまえだれよ"'/>
 <%include file='./1-i.like.this.mako' args='title=u"collections.defaultdictが好きです"'/>　
 ##${slide(u"こういうの良いですね")}
-${slide(u"ところで")}
+#${slide(u"ところで")}
 ## ${slide(u"pythonでコード書いてますか？")}
 ## ${slide(u"pythonでテスト書いてますか？")}
 <%include file='./10-whats.mock.python.mako' args='title=u"What is mock? python"'/>　
