@@ -12,7 +12,7 @@
 <%include file='./1-who.am.i.mako' args='title=u"おまえだれよ"'/>
 <%include file='./1-i.like.this.mako' args='title=u"collections.defaultdictが好きです"'/>　
 ##${slide(u"こういうの良いですね")}
-#${slide(u"ところで")}
+##${slide(u"ところで")}
 ## ${slide(u"pythonでコード書いてますか？")}
 ## ${slide(u"pythonでテスト書いてますか？")}
 <%include file='./10-whats.mock.python.mako' args='title=u"What is mock? python"'/>　
@@ -108,7 +108,8 @@ ${slide(u"インスタンス変数を関知しない")}
 <%include file='./76-mock.effort6.mako' args='subtitle=u"インスタンス変数を関知しない"'/>
 ${slide(u"テスト書いても、オブジェクト間のインターフェイスの変更に弱い")}
 <%include file='./78-strict.code.mako' args='subtitle=u"もうちょっと制限された自由がほしい"'/>
-${slide("hai")}
+<%include file='./80-summary.mako' args='title=u"summary"'/>
+
 </%block>
 
 <%block name="head_tail">
@@ -128,10 +129,14 @@ ${slide("hai")}
   display: block;
 }
 .reveal pre {
-  width: 95%;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 99%;
+  line-height: 1.1em;
+  font-size: 21px;
 }
 .reveal pre code{
-  max-height: 500px;
+  max-height: 520px;
 }
 .reveal h1,
 .reveal h2,

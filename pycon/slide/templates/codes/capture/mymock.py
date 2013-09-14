@@ -19,4 +19,4 @@ class MyMock(object):
         if vls is None:
             raise AssertionError("not called")
         if vls != (args, kw):
-            raise AssertionError("! {}".format(vls))
+            raise AssertionError(vls)

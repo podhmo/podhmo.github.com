@@ -18,6 +18,6 @@
 Error
 </div>
 
-<div style="background-color:#ffa; position:absolute; top:80px; right:0px; font-size:18pt; padding:5px 5px">
+<div style="background-color:#afa; position:absolute; top:80px; right:0px; font-size:18pt; padding:5px 5px">
 Test is Success?
 </div>

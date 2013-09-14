@@ -1,7 +1,7 @@
 <%inherit file="./base/slide.mako"/>
 <%namespace name="u" file="./base/utils.mako"/>
 
-<%u:codebox_left  suffix="use_mock.py">
+<%u:codebox_left  suffix="use_mock.py" suffix="mock.py">
 <%include file="./codes/greeting.py"/>
 </%u:codebox_left>
 <%u:codebox_right  suffix="use_mymock.py">
