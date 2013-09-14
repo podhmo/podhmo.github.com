@@ -233,7 +233,7 @@ D["x"]["x"] # => defaultdict([function dt at 0x10b073398], {})
 テスト対象への入力を置き換える
 </div>
 
-<div style="background-color:#ffa; position:absolute; top:210px; left:750px; font-size:18pt">
+<div style="background-color:#ffa; position:absolute; top:210px; left:820px; font-size:18pt">
 <p>「今日」という時刻に依存した処理。</p>
 <p>「今日」を「2000/01/01」にとしてテストしたい</p>
 <p> date.today()を「2000/01/01」を返すように置き換える。</p>
@@ -275,7 +275,7 @@ D["x"]["x"] # => defaultdict([function dt at 0x10b073398], {})
 テスト対象からの出力を調査する
 </div>
 
-<div style="background-color:#ffa; position:absolute; top:380px; left:750px; font-size:18pt">
+<div style="background-color:#ffa; position:absolute; top:380px; left:820px; font-size:18pt">
 <p>渡されたデータを「印刷」する処理</p>
 <p>実際には「印刷」せずに、確認したい</p>
 <p>印刷処理を置き換える。渡された値を確認</p>
@@ -2675,7 +2675,7 @@ class Tests(unittest.TestCase):
   <li>依存オブジェクト: target.Book</li>
 </ul>
 
-<div style="background-color:#afa; position:absolute; top:80px; left:275px; font-size:18pt; padding:5px 5px">
+<div style="background-color:#afa; position:absolute; top:80px; left:350px; font-size:18pt; padding:5px 5px">
 Running corectly
 </div>
 
@@ -2757,7 +2757,7 @@ class Tests(unittest.TestCase):
   <li>依存オブジェクト: target.Book</li>
 </ul>
 
-<div style="background-color:#faa; position:absolute; top:80px; left:400px; font-size:18pt; padding:5px 5px">
+<div style="background-color:#faa; position:absolute; top:80px; left:480px; font-size:18pt; padding:5px 5px">
 Error
 </div>
 
@@ -2784,11 +2784,11 @@ Test is Success?
 <p>テスト対象とテストコードの意図が揃えばテストは成功してしまう</p>
 
 
-<div style="background-color:#77f; position:absolute; top:210px; left:20px; font-size:18pt; color:white; padding:5px 5px">
+<div style="background-color:#77f; position:absolute; top:210px; left:80px; font-size:18pt; color:white; padding:5px 5px">
 Book.ppを期待
 </div>
 
-<div style="background-color:#5b5; position:absolute; top:410px; right:20px; font-size:18pt; color:white; padding:5px 5px">
+<div style="background-color:#5b5; position:absolute; top:410px; right:80px; font-size:18pt; color:white; padding:5px 5px">
 Book.normalizeを提供
 </div>
 
@@ -2888,7 +2888,7 @@ class Tests(unittest.TestCase):
 </div>
 
 
-<div style="background-color:#faa; position:absolute; top:80px; left:400px; font-size:18pt; padding:5px 5px">
+<div style="background-color:#faa; position:absolute; top:80px; left:480px; font-size:18pt; padding:5px 5px">
 Error
 </div>
 
@@ -3022,7 +3022,7 @@ class Tests(unittest.TestCase):
 </div>
 
 
-<div style="background-color:#faa; position:absolute; top:80px; left:400px; font-size:18pt; padding:5px 5px">
+<div style="background-color:#faa; position:absolute; top:80px; left:480px; font-size:18pt; padding:5px 5px">
 Error
 </div>
 
@@ -3304,9 +3304,7 @@ with mock.patch("__main__.Foo",
 
 
 
-<ul>
-  <li></li>
-</ul>
+<p>hai</p>
 
 </section>
 
@@ -3324,6 +3322,7 @@ with mock.patch("__main__.Foo",
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
+                width: 1120,
 				controls: true,
 				progress: true,
 				history: true,
